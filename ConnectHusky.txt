@@ -1,0 +1,20 @@
+Husky’s hostname will either be set by Clearpath, or defined by the user during the installation process, in any case, you can verify the hostname and IP address of Husky using the following commands during an SSH session with the onboard PC.
+
+hostname
+hostname -i
+
+
+Once Husky’s hostname and IP address have been added to /etc/hosts , ensure the remote PC can communicate with Husky via hostname:
+
+ping HUSKY’S HOSTNAME
+
+
+If both computers can ping each other, then set the following ROS environment variable on your remote PC.
+
+export ROS_MASTER_URI=http://<HUSKY’S HOSTNAME >:11311
+export ROS_HOSTNAME=<REMOTE PC’S HOSTNAME >
+
+
+You can then verify your connection by using:
+rostopic list
+rostopic echo /tf
